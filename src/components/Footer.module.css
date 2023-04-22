@@ -43,15 +43,12 @@
     font-size: 17px;
     transition: all 0.2s;
     border-radius: 5px;
+    font-weight: 500;
+    font-family: 'Vazir';
 }
 
 .field input:hover {
     background-color: rgba(173, 172, 172, 0.558);
-}
-
-.field input::placeholder {
-    font-weight: 500;
-    font-family: 'Vazir';
 }
 
 .field h4 {

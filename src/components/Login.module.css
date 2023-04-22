@@ -1,0 +1,106 @@
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    background-color: #47d7f423;
+    border-radius: 5px;
+    margin: 40px;
+    box-shadow: 4px 4px 10px rgb(206, 206, 206), 
+    -2px -2px 8px rgba(206, 206, 206, 0.427);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerTop h2{
+    margin: 8px 10px 20px;
+    color: #4993FA;
+}
+
+.containerBottom div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+}
+
+.containerBottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerBottom div div {
+    margin: 20px;
+}
+
+.containerBottom input {
+    width: 350px;
+    height: 40px;
+    margin: 20px 10px;
+    padding: 15px;
+    font-family: 'Vazir';
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    transition: all 0.2s ease-in;
+    background-color: #aac3e463;
+}
+
+.containerBottom input:hover {
+    background-color: #aac3e4ae;
+}
+
+.containerBottom input:focus {
+    outline: 1px solid #4993FA;
+}
+
+.containerBottom {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.isAccepted {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isAccepted p {
+    font-size: 13px;
+    font-weight: 500;
+    margin-left: 15px;
+}
+
+.isAccepted input[type="checkbox"] {
+    position: absolute;
+    visibility: hidden;
+}
+
+.isAccepted label {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 1em;
+    margin: 0 auto;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.isAccepted input:checked + label {
+    background-color: #4993FA;
+}
+
+@media(max-width: 400px) {
+    .containerBottom input {
+        width: 100%;
+    }
+}

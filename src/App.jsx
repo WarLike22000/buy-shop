@@ -9,6 +9,7 @@ import ProductDetail from './components/ProductDetail';
 import ShopCart from './components/ShopCart';
 import PageNotFound from './components/PageNotFound';
 import Categories from './components/Categories/Categories';
+import Login from './components/Login';
 
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
@@ -28,6 +29,7 @@ function App() {
           <Route path='/shop-cart' element={<ShopCart />} />
           <Route path='/page-not-found' element={<PageNotFound />} />
           <Route path='/products/:category' element={<Categories />} />
+          <Route path='/login-page' element={<Login />} />
           <Route path='/*' element={<Navigate to='/page-not-found' />} />
         </Routes>
       </ProductsContextProvider>

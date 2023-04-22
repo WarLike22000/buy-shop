@@ -17,7 +17,7 @@ const CartProduct = ( { product } ) => {
 
     return (
         <>
-        <Card sx={{width: 230, height: 'auto', m: '12px', borderRadius: '8px', bgcolor: '#fff'}}>
+        <Card sx={{width: {xs: 500, sm: 400}, height: 'auto', m: 1, borderRadius: '8px', bgcolor: '#fff'}}>
             <Link style={{textDecoration: 'none', color: '#4993FA'}} to={`/productDetail/${id}`}>
             <CardActionArea>
                 <Box sx={{display: 'flex',flexDirection: "column" , justifyContent: 'center', alignItems: 'center', width: 200, height: 250, margin: '85px auto 80px'}}>

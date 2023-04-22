@@ -47,12 +47,12 @@ const Navbar = () => {
                     <Container>
                     <Toolbar>
                         <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}>بای شاپ</Typography>
-                        <Stack sx={{display: {xs: 'none', sm: 'flex'}}} spacing='10px' direction="row">
+                        <Stack sx={{display: {xs: 'none', sm: 'flex'}, justifyContent: 'center', alignItems: 'center'}} spacing='10px' direction="row">
                             <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} sx={{fontSize: '1rem', pr: '20px', ml: '10px'}} endIcon={!open ? <ExpandMore sx={{pr: '7px'}} /> : <ExpandLess sx={{pr: '7px'}} />}>دسته بندی</Button>
                             <DastehBandy open={open} />
                             <Button sx={{fontSize: '1rem'}}>درباره ما</Button>
                             <Button sx={{fontSize: '1rem'}}>تماس با ما</Button>
-                            <Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button>
+                            <Link style={{textDecoration: 'none'}} to='/login-page' ><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></Link>
                         </Stack>
                         <Link to='/shop-cart'>
                           <IconButton sx={{mr: 3}}>

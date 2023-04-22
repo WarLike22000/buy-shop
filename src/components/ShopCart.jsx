@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import styles from './ShopCart.module.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
-import { Button, Container } from '@mui/material';
+import { Button, Container, IconButton } from '@mui/material';
 
 //components
 import DetailShopCart from './DetailShopCart.jsx';
@@ -10,15 +10,20 @@ import DetailShopCart from './DetailShopCart.jsx';
 //context
 import { reducerContext } from './ReducerProvider.jsx';
 import NoneCart from './NoneCart.jsx';
+import { ArrowBack } from '@mui/icons-material';
 
 const ShopCart = () => {
 
     const { state, dispatch } = useContext(reducerContext);
+    const navigate = useNavigate();
     
     return (
         <Container maxWidth='xl'>
             <div className={styles.container}>
-                <div>
+                <IconButton onClick={() => navigate(-1)} sx={{position: 'absolute', top: 10, left: 0}}>
+                    <ArrowBack />
+                </IconButton>
+                <div style={{marginBottom: 100}}>
                     {
                         state.selectedItems.length === 0 && !state.checkout ? <NoneCart /> :
                         state.selectedItems.map(product => <DetailShopCart key={product.id} product={product} />)
