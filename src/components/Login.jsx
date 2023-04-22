@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 //styles
 import styles from './Login.module.css';
+
+//validate
+import { validation } from './ValidationForm';
 
 import { Button } from '@mui/material';
 
@@ -15,7 +18,29 @@ const Login = () => {
         conformPassword: '',
         isAccepted: false
     });
-    console.log(valueInput)
+
+    const [touched, setTouched] = useState({
+        name: false,
+        email: false,
+        password: false,
+        lastName: false,
+        numberPhone: false,
+        confirmPassword: false,
+    });
+
+    const focusHandler = (e) => {
+        setTouched({
+            ...touched,
+            [e.target.name]: true
+        })
+    };
+
+    const [errors, setErrors] = useState({});
+
+    useEffect(() => {
+        setErrors(validation(valueInput))
+    }, [valueInput])
+    console.log(errors)
     const changeHandler = (event) => {
         if(event.target.name === 'isAccepted') {
             setValueInput({...valueInput, [event.target.name]: event.target.checked})
@@ -33,31 +58,40 @@ const Login = () => {
             <div className={styles.containerBottom}>
                 <div>
                     <div>
-                        <input name='name' type='text' placeholder='نام' onChange={changeHandler} />
+                        <input name='name' type='text' placeholder='نام' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.name && touched.name && errors.name}</span>
                     </div>
                     <div>
-                        <input name='email' type='text' placeholder='ایمیل' onChange={changeHandler} />
+                        <input name='email' type='text' placeholder='ایمیل' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.email && touched.email && errors.email}</span>
                     </div>
                     <div>
-                        <input name='password' type='password' placeholder='رمز عبور' onChange={changeHandler} />
+                        <input name='password' type='password' placeholder='رمز عبور' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.password && touched.password && errors.password}</span>
                     </div>
                 </div>
                 <div>
                     <div>
-                        <input name='lastName' type='text' placeholder='نام خانوادگی' onChange={changeHandler} />
+                        <input name='lastName' type='text' placeholder='نام خانوادگی' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.lastName && touched.lastName && errors.lastName}</span>
                     </div>
                     <div>
-                        <input name='numberPhone' type='text' placeholder='تلفن همراه' onChange={changeHandler} />
+                        <input name='numberPhone' type='text' placeholder='تلفن همراه' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.numberPhone && touched.numberPhone && errors.numberPhone}</span>
                     </div>
                     <div>
-                        <input name='confirmPassword' type='password' placeholder='تکرار رمز عبور' onChange={changeHandler} />
+                        <input name='confirmPassword' type='password' placeholder='تکرار رمز عبور' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.confirmPassword && touched.confirmPassword && errors.confirmPassword}</span>
                     </div>
                 </div>
             </div>
             <div className={styles.isAccepted}>
-                <p>حریم خصوصی را خوانده ام و قبول دارم</p>
-                <input id='isAccepted' name='isAccepted' type='checkbox' onChange={changeHandler} />
-                <label for='isAccepted' />
+                <div>
+                    <p>حریم خصوصی را خوانده ام و قبول دارم</p>
+                    <input id='isAccepted' name='isAccepted' type='checkbox' onChange={changeHandler} />
+                    <label for='isAccepted' />
+                </div>
+                <span>{errors.isAccepted && errors.isAccepted}</span>
             </div>
             <Button onClick={e => e.preventDefault()} sx={{width: '50%', m: 2}} variant='contained' type='submit'>ثبت نام</Button>
         </form>
