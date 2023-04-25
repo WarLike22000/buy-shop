@@ -46,7 +46,7 @@ const Navbar = () => {
                 <AppBar sx={{bgcolor: '#F1FAFB'}}>
                     <Container>
                     <Toolbar>
-                        <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}>بای شاپ</Typography>
+                        <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}><Link to='/' style={{textDecoration: 'none', color: '#4993FA'}}>بای شاپ</Link></Typography>
                         <Stack sx={{display: {xs: 'none', sm: 'flex'}, justifyContent: 'center', alignItems: 'center'}} spacing='10px' direction="row">
                             <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} sx={{fontSize: '1rem', pr: '20px', ml: '10px'}} endIcon={!open ? <ExpandMore sx={{pr: '7px'}} /> : <ExpandLess sx={{pr: '7px'}} />}>دسته بندی</Button>
                             <DastehBandy open={open} />
@@ -75,31 +75,31 @@ const Navbar = () => {
                               </ListItemButton>
                               <Collapse in={open}>
                                 <List sx={{mr: 3}} disablePadding>
-                                  <ListItemButton>
+                                  <ListItemButton onClick={() => setMenu(false)}>
                                     <Link style={{textDecoration: 'none'}} to='/products/jewelery'><Typography sx={{fontWeight: 500, color: '#0A4D68'}}>جواهرات</Typography></Link>
                                   </ListItemButton>
-                                  <ListItemButton>
+                                  <ListItemButton onClick={() => setMenu(false)}>
                                   <Link style={{textDecoration: 'none'}} to="/products/men's clothing"><Typography sx={{fontWeight: 500, color: '#0A4D68'}}>مردانه</Typography></Link>
                                   </ListItemButton>
-                                  <ListItemButton>
+                                  <ListItemButton onClick={() => setMenu(false)}>
                                   <Link style={{textDecoration: 'none'}} to='/products/electronics'><Typography sx={{fontWeight: 500, color: '#0A4D68'}}>الکترونیک</Typography></Link>
                                   </ListItemButton>
-                                  <ListItemButton>
+                                  <ListItemButton onClick={() => setMenu(false)}>
                                   <Link style={{textDecoration: 'none'}} to="/products/women's clothing"><Typography sx={{fontWeight: 500, color: '#0A4D68'}}>زنانه</Typography></Link>
                                   </ListItemButton>
                                 </List>
                               </Collapse>
                               <Divider />
-                              <ListItemButton sx={{color: '#088395'}}>
+                              <ListItemButton onClick={() => setMenu(false)} sx={{color: '#088395'}}>
                                   <ListItemIcon><AccountBalance sx={{color: '#088395'}} /></ListItemIcon>
                                   درباره ما
                               </ListItemButton>
                               <Divider />
-                              <ListItemButton sx={{color: '#088395'}}>
+                              <ListItemButton onClick={() => setMenu(false)} sx={{color: '#088395'}}>
                                   <ListItemIcon><AddIcCall sx={{color: '#088395'}} /></ListItemIcon>
                                   تماس با ما
                               </ListItemButton>
-                            <ListItemButton sx={{mt: '72px'}}><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></ListItemButton>
+                            <Link onClick={() => setMenu(false)} to='/login-page' style={{textDecoration: 'none'}}><ListItemButton sx={{mt: '72px'}}><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></ListItemButton></Link>
                               </Box>
                             </List>
                         </Drawer>

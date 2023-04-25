@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 
-import Navbar from '../Navbar.jsx'
 import SliderShow from '../SliderShow'
 import Body from '../Body'
 import Footer from '../Footer.jsx'
@@ -18,7 +17,6 @@ const Home = () => {
                 products.length === 0 ?
                 <Loader /> :
                 <>
-                    <Navbar />
                     <SliderShow />
                     <Body />
                     <Footer />
