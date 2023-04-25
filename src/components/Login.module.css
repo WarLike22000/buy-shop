@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 25px;
 }
 
 .containerTop h2{
@@ -120,5 +121,12 @@
 @media(max-width: 400px) {
     .containerBottom input {
         width: 100%;
+    }
+    .containerBottom {
+        width: 100%;
+        margin-left: 40px;
+    }
+    .containerTop h2 {
+        font-size: 15px;
     }
 }

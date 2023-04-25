@@ -5,9 +5,12 @@ import styles from './Login.module.css';
 //validate
 import { validation } from './ValidationForm';
 
-import { Button } from '@mui/material';
+import { Alert, Box, Button, Snackbar, Stack } from '@mui/material';
 
 const Login = () => {
+
+    const [open, setOpen] = useState(false)
+    const [openError, setOpenError] = useState(false)
 
     const [valueInput, setValueInput] = useState({
         name: '',
@@ -27,7 +30,7 @@ const Login = () => {
         numberPhone: false,
         confirmPassword: false,
     });
-
+    
     const focusHandler = (e) => {
         setTouched({
             ...touched,
@@ -39,7 +42,7 @@ const Login = () => {
 
     useEffect(() => {
         setErrors(validation(valueInput))
-    }, [valueInput])
+    }, [valueInput, touched])
     console.log(errors)
     const changeHandler = (event) => {
         if(event.target.name === 'isAccepted') {
@@ -48,6 +51,22 @@ const Login = () => {
             setValueInput({...valueInput, [event.target.name]: event.target.value})
         }
     };
+
+    const openHandler = (e) => {
+        e.preventDefault()
+        const key = Object.keys(errors);
+        console.log(key)
+        if(key.length === 0) {
+            setOpen(true)
+        } else {
+            setOpenError(true)
+        }
+    };
+
+    const closeHandler = () => {
+        setOpen(false)
+        setOpenError(false)
+    }
     
     return (
         <div className={styles.mainContainer}>
@@ -93,7 +112,17 @@ const Login = () => {
                 </div>
                 <span>{errors.isAccepted && errors.isAccepted}</span>
             </div>
-            <Button onClick={e => e.preventDefault()} sx={{width: '50%', m: 2}} variant='contained' type='submit'>ثبت نام</Button>
+                <Snackbar open={open} autoHideDuration={6000} onClose={closeHandler}>
+                    <Alert variant='filled' severity='success' sx={{width: '300px'}}>
+                        ورود با موفقیت انجام شد!
+                    </Alert>
+                </Snackbar>
+                <Snackbar open={openError} autoHideDuration={6000} onClose={closeHandler}>
+                    <Alert variant='filled' severity='error' sx={{width: '300px'}}>
+                        ثبت نام با خطا مواجه شد!
+                    </Alert>
+                </Snackbar>
+            <Button onClick={openHandler} sx={{width: '50%', m: 2}} variant='contained' type='submit'>ثبت نام</Button>
         </form>
         </div>
     );

@@ -35,7 +35,7 @@ export const validation = (value) => {
 
     if(!value.numberPhone) {
         errors.numberPhone = 'لطفا شماره خود را وارد کنید'
-    } else if(!/09(1[0-9]|3[1-9]|2[1-9])-?[0-9]{3}-?[0-9]{4}/.test(value.numberPhone)) {
+    } else if(!/09(1[0-9]|3[1-9]|2[1-9]|9[0-9])-?[0-9]{3}-?[0-9]{4}/.test(value.numberPhone)) {
         errors.numberPhone = 'لطفا شماره معتبر وارد کنید'
     } else {
         delete errors.numberPhone
