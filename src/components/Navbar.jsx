@@ -45,7 +45,7 @@ const Navbar = () => {
                 <AppBar sx={{bgcolor: '#F1FAFB'}}>
                     <Container>
                     <Toolbar>
-                        <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}><Link to='/' style={{textDecoration: 'none', color: '#4993FA'}}>بای شاپ</Link></Typography>
+                        <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}><Link to='/' style={{textDecoration: 'none', color: '#4993FA', width: 'fit-content'}}>بای شاپ</Link></Typography>
                         <Stack sx={{display: {xs: 'none', sm: 'flex'}, justifyContent: 'center', alignItems: 'center'}} spacing='10px' direction="row">
                             <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} sx={{fontSize: '1rem', pr: '20px', ml: '10px'}} endIcon={!open ? <ExpandMore sx={{pr: '7px'}} /> : <ExpandLess sx={{pr: '7px'}} />}>دسته بندی</Button>
                             <DastehBandy open={open} />
