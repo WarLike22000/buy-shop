@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-around;
     position: relative;
+    margin-top: 60px;
 }
 
 .containerLeft {

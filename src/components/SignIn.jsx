@@ -44,11 +44,15 @@ const SignIn = () => {
     const openHandler = (e) => {
         e.preventDefault()
         const key = Object.keys(errors);
-        
         if(key.length === 0) {
             setOpen(true)
         } else {
             setOpenError(true)
+            setTouched({
+                email: true,
+                password: true,
+                numberPhone: true,
+            })
         }
     };
 
@@ -80,12 +84,12 @@ const SignIn = () => {
                 </div>
             </div>
                 <Snackbar open={open} autoHideDuration={6000} onClose={closeHandler}>
-                    <Alert variant='filled' severity='success' sx={{width: '300px'}}>
+                    <Alert variant='filled' severity='success' sx={{width: '250px'}}>
                          ورود با موفقیت انجام شد!
                     </Alert>
                 </Snackbar>
                 <Snackbar open={openError} autoHideDuration={6000} onClose={closeHandler}>
-                    <Alert variant='filled' severity='error' sx={{width: '300px'}}>
+                    <Alert variant='filled' severity='error' sx={{width: '250px'}}>
                          ورود با خطا مواجه شد!
                     </Alert>
                 </Snackbar>

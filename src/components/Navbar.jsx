@@ -30,7 +30,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const { state } = useContext(reducerContext)
-  console.log(state)
   
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {

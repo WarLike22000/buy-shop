@@ -44,7 +44,7 @@ const Login = () => {
     useEffect(() => {
         setErrors(validation(valueInput))
     }, [valueInput, touched])
-    console.log(errors)
+    
     const changeHandler = (event) => {
         if(event.target.name === 'isAccepted') {
             setValueInput({...valueInput, [event.target.name]: event.target.checked})
@@ -61,6 +61,14 @@ const Login = () => {
             setOpen(true)
         } else {
             setOpenError(true)
+            setTouched({
+                name: true,
+                email: true,
+                password: true,
+                lastName: true,
+                numberPhone: true,
+                confirmPassword: true,
+            })
         }
     };
 
@@ -114,12 +122,12 @@ const Login = () => {
                 <span>{errors.isAccepted && errors.isAccepted}</span>
             </div>
                 <Snackbar open={open} autoHideDuration={6000} onClose={closeHandler}>
-                    <Alert variant='filled' severity='success' sx={{width: '300px'}}>
+                    <Alert variant='filled' severity='success' sx={{width: '250px'}}>
                         ثبت نام با موفقیت انجام شد!
                     </Alert>
                 </Snackbar>
                 <Snackbar open={openError} autoHideDuration={6000} onClose={closeHandler}>
-                    <Alert variant='filled' severity='error' sx={{width: '300px'}}>
+                    <Alert variant='filled' severity='error' sx={{width: '250px'}}>
                         ثبت نام با خطا مواجه شد!
                     </Alert>
                 </Snackbar>

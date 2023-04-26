@@ -87,7 +87,16 @@
     .containerTwo p:nth-child(2) {
         width: 60%;
     }
-    /* .mainContainer {
-        margin: 350px auto;
-    } */
+}
+
+@media(max-width: 350px) {
+    .containerImg img {
+        width: 110px;
+    }
+    .containerTwo h3 {
+        font-size: 10px;
+    }
+    .containerTwo p:nth-child(2) {
+        font-size: 9px;
+    }
 }
