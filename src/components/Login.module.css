@@ -67,6 +67,7 @@
     transition: all 0.2s ease-in;
     background-color: #aac3e463;
     border: 1px solid #000;
+    color: #000;
 }
 
 .containerBottom input:hover {
