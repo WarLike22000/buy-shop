@@ -97,7 +97,7 @@ const Footer = () => {
                 </div>
                 <div className={styles.field}>
                     <h4>با ما همراه باشید!</h4>
-                    <div>
+                    <div className={styles.fieldMain}>
                         <div className={styles.emailValidate}>
                             <input type='text' value={value.email} onFocus={focusHandler} onChange={e => setValue({email: e.target.value})} name='email' placeholder='ایمیل شما' />
                             <span>{errors.email && touched.email && errors.email}</span>

@@ -44,7 +44,7 @@ const ProductDetail = () => {
                     <p>دسته: {category}</p>
                     <p>موجودی در انبار: {count}</p>
                     {
-                        quantityCount(state, product.id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center', width: '150px', height: '31px', mt: 2}}>
+                        quantityCount(state, product.id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center', width: '150px', height: '31px', mt: 2, mb: 2}}>
                             <IconButton onClick={() => dispatch({type: 'INCREASE', payload: product})}><Add /></IconButton>
                             <Typography color='#19376D' sx={{fontWeight: 600, mr: 1, ml: 1, textAlign: 'center'}}>{quantityCount(state, product.id)}</Typography>
                             {
@@ -56,7 +56,7 @@ const ProductDetail = () => {
                         </Box>
                     }
                     {
-                        isInCart(state, product.id) && <Button onClick={() => dispatch({type: 'ADD_ITEM', payload: product})} disableElevation sx={{fontSize: '13px', fontWeight: 700}} variant='contained' size='small'>افزودن به سبد خرید</Button>
+                        isInCart(state, product.id) && <Button onClick={() => dispatch({type: 'ADD_ITEM', payload: product})} disableElevation sx={{fontSize: '13px', fontWeight: 700, mt: 2, mb: 2}} variant='contained' size='small'>افزودن به سبد خرید</Button>
                     }
                 </div>
             </div>

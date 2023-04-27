@@ -31,19 +31,19 @@
 
 .field {
     margin: 0 auto 15px;
-    display: flex;
-    flex-direction: column;
+    /* display: flex;
+    flex-direction: column; */
     width: 100%;
 }
 
-.field div {
+.fieldMain {
     display: flex;
-    justify-content: flex-end;
-    width: 100%;
+    justify-content: space-between;
+    max-width: 400px;
 }
 
 .field input {
-    max-width: 300px;
+    max-width: 350px;
     height: 45px;
     background-color: rgba(192, 190, 190, 0.412);
     outline: none;
@@ -68,6 +68,7 @@
     font-size: 12px;
     max-width: 200px;
     height: 20px;
+    display: block;
 }
 
 .field input:hover {
@@ -77,6 +78,7 @@
 .field h4 {
     font-size: 18px;
     margin: 0 5px 9px auto;
+    color: #000;
 }
 
 .footerPower {
@@ -94,14 +96,8 @@
     color: rgb(119, 119, 120);
 }
 
-/* @media(max-width: 403px) {
-    .field input {
-        width: 200px;
+@media(max-width: 297px) {
+    .fieldMain {
+        display: block;
     }
 }
-
-@media(max-width: 300px) {
-    .field input {
-        width: 150px;
-    }
-} */
