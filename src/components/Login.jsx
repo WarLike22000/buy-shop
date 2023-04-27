@@ -90,22 +90,23 @@ const Login = () => {
                         <span>{errors.name && touched.name && errors.name}</span>
                     </div>
                     <div>
-                        <input name='email' type='text' placeholder='ایمیل' onChange={changeHandler} onFocus={focusHandler} />
-                        <span>{errors.email && touched.email && errors.email}</span>
-                    </div>
-                    <div>
-                        <input name='password' type='password' placeholder='رمز عبور' onChange={changeHandler} onFocus={focusHandler} />
-                        <span>{errors.password && touched.password && errors.password}</span>
-                    </div>
-                </div>
-                <div>
-                    <div>
                         <input name='lastName' type='text' placeholder='نام خانوادگی' onChange={changeHandler} onFocus={focusHandler} />
                         <span>{errors.lastName && touched.lastName && errors.lastName}</span>
                     </div>
                     <div>
                         <input name='numberPhone' type='text' placeholder='تلفن همراه' onChange={changeHandler} onFocus={focusHandler} />
                         <span>{errors.numberPhone && touched.numberPhone && errors.numberPhone}</span>
+                    </div>
+                    
+                </div>
+                <div>
+                    <div>
+                        <input name='email' type='text' placeholder='ایمیل' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.email && touched.email && errors.email}</span>
+                    </div>
+                    <div>
+                        <input name='password' type='password' placeholder='رمز عبور' onChange={changeHandler} onFocus={focusHandler} />
+                        <span>{errors.password && touched.password && errors.password}</span>
                     </div>
                     <div>
                         <input name='confirmPassword' type='password' placeholder='تکرار رمز عبور' onChange={changeHandler} onFocus={focusHandler} />

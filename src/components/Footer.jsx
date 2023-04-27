@@ -102,7 +102,7 @@ const Footer = () => {
                             <input type='text' value={value.email} onFocus={focusHandler} onChange={e => setValue({email: e.target.value})} name='email' placeholder='ایمیل شما' />
                             <span>{errors.email && touched.email && errors.email}</span>
                         </div>
-                        <Button onClick={openHandler} sx={{mr: 1, height: '45px' }} variant='contained' disableElevation>ثبت</Button>
+                        <Button onClick={openHandler} sx={{mr: 1, height: '45px', width: 'auto'}} variant='contained' disableElevation>ثبت</Button>
                     </div>
                 </div>
             </div>

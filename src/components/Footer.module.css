@@ -33,20 +33,23 @@
     margin: 0 auto 15px;
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .field div {
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
 }
 
 .field input {
-    width: 300px;
+    max-width: 300px;
     height: 45px;
     background-color: rgba(192, 190, 190, 0.412);
     outline: none;
     border: none;
     padding: 15px;
-    font-size: 17px;
+    font-size: 13px;
     transition: all 0.2s;
     border-radius: 5px;
     font-weight: 500;
@@ -56,13 +59,14 @@
 .emailValidate {
     display: flex;
     flex-direction: column;
+    width: 100%;
 }
 
 .emailValidate span {
     color: red;
     font-weight: 500;
     font-size: 12px;
-    width: 200px;
+    max-width: 200px;
     height: 20px;
 }
 
@@ -89,3 +93,15 @@
     font-size: 15px;
     color: rgb(119, 119, 120);
 }
+
+/* @media(max-width: 403px) {
+    .field input {
+        width: 200px;
+    }
+}
+
+@media(max-width: 300px) {
+    .field input {
+        width: 150px;
+    }
+} */
