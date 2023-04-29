@@ -18,10 +18,8 @@ const Categories = () => {
     
     return (
         <Container maxWidth='xl'>
-            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', position: 'relative', marginTop: '90px'}}>
-                {/* <IconButton onClick={() => navigate(-1)} sx={{position: 'absolute', top: 0, left: 0, zIndex: 15}}>
-                    <ArrowBack />
-                </IconButton> */}
+            <div style={{margin: '90px auto 0', display: 'flex', justifyContent: 'center'}}><h3>{locationProduct.category}</h3></div>
+            <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', position: 'relative', marginTop: '40px'}}>
                 {
                     productsFilter.map(item => <OneCategory key={item.id} product={item} />)
                 }
