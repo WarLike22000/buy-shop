@@ -2,6 +2,8 @@ import React, { useState, createContext, useContext } from 'react';
 
 import { AppBar, Badge, Box, Button, Collapse, Container, Divider, Drawer, Icon, IconButton, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Slide, Stack, Toolbar, Typography, useScrollTrigger } from '@mui/material';
 import { AccountBalance, AccountBox, AddIcCall, ChevronLeft, Close, ExpandLess, ExpandMore, FormatListBulleted, Login, ShoppingCartCheckout } from '@mui/icons-material';
+//components
+import ShowAccount from './ShowAccount';
 
 import { Link } from 'react-router-dom';
 
@@ -30,6 +32,7 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
   const { state } = useContext(reducerContext)
+  const [showAccount, setShowAccount] = useState(false);
   
   const toggleDrawer = (open) => (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -62,9 +65,12 @@ const Navbar = () => {
                         </Link>
                         {
                           state.account &&
-                          <IconButton>
-                            <AccountBox sx={{color: '#4993FA', fontSize: '31px'}} />
-                          </IconButton>
+                          <>
+                            <IconButton onMouseEnter={() => setShowAccount(true)} onMouseLeave={() => setShowAccount(false)}>
+                              <AccountBox sx={{color: '#4993FA', fontSize: '31px'}} />
+                            </IconButton>
+                            <ShowAccount showAccount={showAccount} />
+                          </>
                         }
                           <IconButton onClick={() => setMenu(!menu)} sx={{display: {xs: 'flex', sm: 'none'}}}>
                               <FormatListBulleted sx={{color: '#4993FA'}} />

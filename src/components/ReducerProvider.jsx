@@ -69,6 +69,11 @@ const cartReducer = (state, action) => {
                 ...state,
                 account: true
             }
+        case 'REMOVE_ACCOUNT':
+            return {
+                ...state,
+                account: false
+            }
         default: return state;
     }
 };
