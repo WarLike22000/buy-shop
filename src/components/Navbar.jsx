@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from 'react';
 
-import { AppBar, Badge, Box, Button, Collapse, Container, Divider, Drawer, IconButton, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Slide, Stack, Toolbar, Typography, useScrollTrigger } from '@mui/material';
-import { AccountBalance, AddIcCall, ChevronLeft, Close, ExpandLess, ExpandMore, FormatListBulleted, Login, ShoppingCartCheckout } from '@mui/icons-material';
+import { AppBar, Badge, Box, Button, Collapse, Container, Divider, Drawer, Icon, IconButton, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Slide, Stack, Toolbar, Typography, useScrollTrigger } from '@mui/material';
+import { AccountBalance, AccountBox, AddIcCall, ChevronLeft, Close, ExpandLess, ExpandMore, FormatListBulleted, Login, ShoppingCartCheckout } from '@mui/icons-material';
 
 import { Link } from 'react-router-dom';
 
@@ -60,6 +60,12 @@ const Navbar = () => {
                             </Badge>
                           </IconButton>
                         </Link>
+                        {
+                          state.account &&
+                          <IconButton>
+                            <AccountBox sx={{color: '#4993FA', fontSize: '31px'}} />
+                          </IconButton>
+                        }
                           <IconButton onClick={() => setMenu(!menu)} sx={{display: {xs: 'flex', sm: 'none'}}}>
                               <FormatListBulleted sx={{color: '#4993FA'}} />
                           </IconButton>

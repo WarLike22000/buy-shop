@@ -29,7 +29,6 @@ const Footer = () => {
 
     useEffect(() => {
         setErrors(validateFooterEmail(value))
-        console.log(errors)
     }, [value, touched])
 
     const focusHandler = (e) => {

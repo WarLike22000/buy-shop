@@ -1,18 +1,24 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 //styles
 import styles from './Login.module.css';
+
+//context
+import { reducerContext }  from './ReducerProvider.jsx';
 
 //validate
 import { validation } from './ValidationForm';
 
 import { Alert, Box, Button, Snackbar, Stack } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
-    const [open, setOpen] = useState(false)
-    const [openError, setOpenError] = useState(false)
+    const [open, setOpen] = useState(false);
+    const [openError, setOpenError] = useState(false);
+    const navigate = useNavigate();
 
+    const { dispatch } = useContext(reducerContext);
+    
     const [valueInput, setValueInput] = useState({
         name: '',
         email: '',
@@ -59,6 +65,8 @@ const Login = () => {
         
         if(key.length === 0) {
             setOpen(true)
+            navigate('/')
+            dispatch({type: 'CREATE_ACCOUNT'})
         } else {
             setOpenError(true)
             setTouched({

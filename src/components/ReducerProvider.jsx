@@ -4,7 +4,8 @@ const initialState = {
     selectedItems: [],
     itemsCounter: 0,
     total: 0,
-    checkout: false
+    checkout: false,
+    account: false
 };
 
 const sumItems = items => {
@@ -62,6 +63,11 @@ const cartReducer = (state, action) => {
                 itemsCounter: 0,
                 total: 0,
                 checkout: true
+            }
+        case 'CREATE_ACCOUNT':
+            return {
+                ...state,
+                account: true
             }
         default: return state;
     }
