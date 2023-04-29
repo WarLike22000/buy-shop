@@ -18,7 +18,7 @@ const Categories = () => {
     
     return (
         <Container maxWidth='xl'>
-            <div style={{margin: '90px auto 0', display: 'flex', justifyContent: 'center'}}><h3>{locationProduct.category}</h3></div>
+            <div style={{margin: '90px auto 0', display: 'flex', justifyContent: 'center', color: '#146C94'}}><h3>{locationProduct.category}</h3></div>
             <div style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', position: 'relative', marginTop: '40px'}}>
                 {
                     productsFilter.map(item => <OneCategory key={item.id} product={item} />)
