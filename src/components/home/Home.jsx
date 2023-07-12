@@ -16,7 +16,7 @@ const Home = () => {
     return (
         <div>
             {
-                products.length === 0 ?
+                products.length == 0 ?
                 <Loader /> :
                 <>
                     <TopBody />

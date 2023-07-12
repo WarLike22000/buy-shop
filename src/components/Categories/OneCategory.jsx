@@ -7,6 +7,9 @@ import { Add, DeleteOutline, Favorite, FavoriteBorder, Remove, Rocket, Share } f
 import { isInCart, quantityCount, shorten } from '../../helper/function.js';
 import { reducerContext } from '../ReducerProvider.jsx';
 
+//redux
+import { addItem, decrease, increase, removeItem } from '../../features/selectedSlice.jsx';
+
 const OneCategory = ( { product } ) => {
 
     const { image, title, category, price, rating: { rate }, id } = product;
@@ -16,7 +19,7 @@ const OneCategory = ( { product } ) => {
 
     const [rateProduct, setRateProduct] = useState(rate);
     const [favorite, setFavorite] = useState(false);
-    const { state, dispatch } = useContext(reducerContext);
+    const { selectedItems, dispatch } = useContext(reducerContext);
 
     return (
         <Card sx={{width: {xs: 500, sm: 400}, height: 'auto', m: '12px', borderRadius: '8px', bgcolor: '#fff'}}>
@@ -60,19 +63,19 @@ const OneCategory = ( { product } ) => {
                 </CardActions>
                 <CardActions>
                     {
-                        quantityCount(state, id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center'}}>
-                            <IconButton onClick={() => dispatch({type: 'INCREASE', payload: product})}><Add /></IconButton>
-                            <Typography color='#19376D' sx={{fontWeight: 600, mr: 1, ml: 1}}>{quantityCount(state, id)}</Typography>
+                        quantityCount(selectedItems, id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center'}}>
+                            <IconButton onClick={() => dispatch(increase(product))}><Add /></IconButton>
+                            <Typography color='#19376D' sx={{fontWeight: 600, mr: 1, ml: 1}}>{quantityCount(selectedItems, id)}</Typography>
                             {
-                                quantityCount(state, id) > 1 && <IconButton onClick={() => dispatch({type: 'DECREASE', payload: product})}><Remove /></IconButton>
+                                quantityCount(selectedItems, id) > 1 && <IconButton onClick={() => dispatch(decrease(product))}><Remove /></IconButton>
                             }
                             {
-                                quantityCount(state, id) === 1 && <IconButton onClick={() => dispatch({type: 'REMOVE_ITEM', payload: product})}><DeleteOutline /></IconButton>
+                                quantityCount(selectedItems, id) === 1 && <IconButton onClick={() => dispatch(removeItem(product))}><DeleteOutline /></IconButton>
                             }
                         </Box>
                     }
                     {
-                        isInCart(state, id) && <Button onClick={() => dispatch({type: 'ADD_ITEM', payload: product})} disableElevation sx={{fontSize: '13px', fontWeight: 700}} variant='contained' size='small'>افزودن</Button>
+                        isInCart(selectedItems, id) && <Button onClick={() => dispatch(addItem(product))} disableElevation sx={{fontSize: '13px', fontWeight: 700}} variant='contained' size='small'>افزودن</Button>
                     }
                     
                 </CardActions>

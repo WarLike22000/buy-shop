@@ -1,7 +1,7 @@
 import React, { useState, createContext, useContext } from 'react';
 
-import { AppBar, Badge, Box, Button, Collapse, Container, Divider, Drawer, Icon, IconButton, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader, Menu, MenuItem, Slide, Stack, Toolbar, Typography, useScrollTrigger } from '@mui/material';
-import { AccountBalance, AccountBox, AddIcCall, ChevronLeft, Close, ExpandLess, ExpandMore, FormatListBulleted, Login, ShoppingCartCheckout } from '@mui/icons-material';
+import { AppBar, Badge, Box, Button, Collapse, Container, Divider, Drawer, Icon, IconButton, List, ListItemButton, ListItemIcon, ListSubheader, Slide, Stack, Toolbar, Typography, useScrollTrigger } from '@mui/material';
+import { AccountBalance, AccountBox, AddIcCall, ExpandLess, ExpandMore, FormatListBulleted, Login, ShoppingCartCheckout } from '@mui/icons-material';
 //components
 import ShowAccount from './ShowAccount';
 
@@ -31,7 +31,7 @@ const Navbar = () => {
   
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState(false);
-  const { state } = useContext(reducerContext)
+  const { selectedItems } = useContext(reducerContext)
   const [showAccount, setShowAccount] = useState(false);
   
   const toggleDrawer = (open) => (event) => {
@@ -43,28 +43,32 @@ const Navbar = () => {
   
     return (
       <>
-        <div style={{position: 'relative', zIndex: '5', height: '1px'}}>
+        <div style={{height: '1px'}}>
             <HideOnScroll>
                 <AppBar sx={{bgcolor: '#F1FAFB'}}>
                     <Container>
                     <Toolbar>
                         <Typography color="#4993FA" sx={{cursor: 'pointer', fontWeight: 700, fontSize: '1.4rem', flexGrow: 1}}><Link to='/' style={{textDecoration: 'none', color: '#4993FA', width: 'fit-content'}}>بای شاپ</Link></Typography>
                         <Stack sx={{display: {xs: 'none', sm: 'flex'}, justifyContent: 'center', alignItems: 'center'}} spacing='10px' direction="row">
-                            <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} sx={{fontSize: '1rem', pr: '20px', ml: '10px'}} endIcon={!open ? <ExpandMore sx={{pr: '7px'}} /> : <ExpandLess sx={{pr: '7px'}} />}>دسته بندی</Button>
-                            <DastehBandy open={open} />
+                            <div style={{position: "relative"}}>
+                              <Button onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} sx={{fontSize: '1rem', pr: '20px', ml: '10px'}} endIcon={!open ? <ExpandMore sx={{pr: '7px'}} /> : <ExpandLess sx={{pr: '7px'}} />}>دسته بندی</Button>
+                              <DastehBandy open={open} />
+                            </div>
                             <Button sx={{fontSize: '1rem'}}>درباره ما</Button>
                             <Button sx={{fontSize: '1rem'}}>تماس با ما</Button>
-                            <Link style={{textDecoration: 'none'}} to='/login-page' ><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></Link>
+                            {
+                              !selectedItems.account && <Link style={{textDecoration: 'none'}} to='/login-page' ><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></Link>
+                            }
                         </Stack>
                         <Link to='/shop-cart'>
                           <IconButton sx={{mr: 3}}>
-                            <Badge badgeContent={state.itemsCounter} color='primary' sx={{color: '#4993FA'}}>
+                            <Badge badgeContent={selectedItems.itemsCounter} color='primary' sx={{color: '#4993FA'}}>
                               <ShoppingCartCheckout sx={{color: '#4993FA', fontSize: '31px'}} />
                             </Badge>
                           </IconButton>
                         </Link>
                         {
-                          state.account &&
+                          selectedItems.account &&
                           <>
                             <IconButton onMouseEnter={() => setShowAccount(true)} onMouseLeave={() => setShowAccount(false)}>
                               <AccountBox sx={{color: '#4993FA', fontSize: '31px'}} />
@@ -110,7 +114,9 @@ const Navbar = () => {
                                   <ListItemIcon><AddIcCall sx={{color: '#088395'}} /></ListItemIcon>
                                   تماس با ما
                               </ListItemButton>
-                            <Link onClick={() => setMenu(false)} to='/login-page' style={{textDecoration: 'none'}}><ListItemButton sx={{mt: '72px'}}><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></ListItemButton></Link>
+                              {
+                               !selectedItems.account && <Link onClick={() => setMenu(false)} to='/login-page' style={{textDecoration: 'none'}}><ListItemButton sx={{mt: '72px'}}><Button size='small' variant='outlined'>ورود | ثبت نام  <Login sx={{mr: '10px'}} /></Button></ListItemButton></Link>
+                              }
                               </Box>
                             </List>
                         </Drawer>

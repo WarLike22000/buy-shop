@@ -8,8 +8,10 @@ import { reducerContext }  from './ReducerProvider.jsx';
 //validate
 import { validation } from './ValidationForm';
 
-import { Alert, Box, Button, Snackbar, Stack } from '@mui/material';
+import { Alert, Button, Snackbar, Stack } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+//redux
+import { createAccount } from '../features/selectedSlice';
 
 const Login = () => {
 
@@ -66,7 +68,7 @@ const Login = () => {
         if(key.length === 0) {
             setOpen(true)
             navigate('/')
-            dispatch({type: 'CREATE_ACCOUNT'})
+            dispatch(createAccount())
         } else {
             setOpenError(true)
             setTouched({

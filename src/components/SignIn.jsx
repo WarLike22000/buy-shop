@@ -9,7 +9,9 @@ import { reducerContext }  from './ReducerProvider.jsx';
 import { validationSignIn } from './ValidationSignIn';
 
 import { Alert, Box, Button, Snackbar, Stack } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+//redux
+import { createAccount } from '../features/selectedSlice';
 
 const SignIn = () => {
     const [open, setOpen] = useState(false);
@@ -53,7 +55,7 @@ const SignIn = () => {
         if(key.length === 0) {
             setOpen(true)
             navigate('/')
-            dispatch({type: 'CREATE_ACCOUNT'})
+            dispatch(createAccount())
         } else {
             setOpenError(true)
             setTouched({

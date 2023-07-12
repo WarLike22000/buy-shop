@@ -6,13 +6,19 @@ import { Button, Divider, IconButton } from '@mui/material';
 import { Bolt, CardGiftcard, Close } from '@mui/icons-material';
 
 import { reducerContext } from './ReducerProvider.jsx';
-import empityShop from '../assets/empityShop-removebg-preview.png';
+//redux
+import { removeAccount } from '../features/selectedSlice';
 
 const ShowAccount = ( { showAccount } ) => {
 
     const [open , setOpen] = useState(false);
     const { dispatch } = useContext(reducerContext);
     const navigate = useNavigate();
+
+    const clickHandler = () => {
+        setOpen(false)
+        navigate('/shop-cart')
+    }
     
     return (
             <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} className={showAccount || open ? styles.mainContainer : styles.mainContainerTwo}>
@@ -23,18 +29,18 @@ const ShowAccount = ( { showAccount } ) => {
                         </IconButton>
                     </div>
                     <Divider variant='middle' />
-                    <div>
+                    <div onClick={() => setOpen(false)}>
                         <Bolt />
                         <p>شارژ کیف پول</p>
                     </div>
                     <Divider variant='middle' />
-                    <div onClick={() => navigate('/shop-cart')}>
+                    <div onClick={clickHandler}>
                         <CardGiftcard />
                         <p>سفارش ها</p>
                     </div>
                     <Divider variant='middle' />
                     <div>
-                        <Button onClick={() => dispatch({type: 'REMOVE_ACCOUNT'})} variant='outlined' size='small' color='error'>خروج از حساب</Button>
+                        <Button onClick={() => dispatch(removeAccount())} variant='outlined' size='small' color='error'>خروج از حساب</Button>
                     </div>
                 </div>
             </div>

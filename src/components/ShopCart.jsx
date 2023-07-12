@@ -11,10 +11,12 @@ import DetailShopCart from './DetailShopCart.jsx';
 import { reducerContext } from './ReducerProvider.jsx';
 import NoneCart from './NoneCart.jsx';
 import { MoreVert } from '@mui/icons-material';
+//redux
+import { checkout, clear } from '../features/selectedSlice';
 
 const ShopCart = () => {
 
-    const { state, dispatch } = useContext(reducerContext);
+    const { selectedItems, dispatch } = useContext(reducerContext);
     const navigate = useNavigate();
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -23,7 +25,7 @@ const ShopCart = () => {
         setAnchorEl(event.currentTarget);
     };
     const handleClose = () => {
-        dispatch({type: 'CLEAR'})
+        dispatch(clear())
         setAnchorEl(null);
     };
     const handleCloseOne = () => {
@@ -39,12 +41,12 @@ const ShopCart = () => {
             <div className={styles.container}>
                 <div style={{marginBottom: 100}}>
                     {
-                        state.selectedItems.length === 0 && !state.checkout ? <NoneCart /> :
-                        state.selectedItems.map(product => <DetailShopCart key={product.id} product={product} />)
+                        selectedItems.selectedItems.length === 0 && !selectedItems.checkout ? <NoneCart /> :
+                        selectedItems.selectedItems.map(product => <DetailShopCart key={product.id} product={product} />)
                     }
                 </div>
                 {
-                    state.total >= 1 && state.itemsCounter &&
+                    selectedItems.total >= 1 && selectedItems.itemsCounter &&
                 <div className={styles.containerLeft}>
                     <div className={styles.clear}>
                         <IconButton id="basic-button"
@@ -67,13 +69,13 @@ const ShopCart = () => {
                     </div>
                     <div>
                         <p>جمع سبد خرید</p>
-                        <p>{state.total}</p>
+                        <p>{selectedItems.total}</p>
                     </div>
-                    <Button onClick={() => dispatch({type: 'CHECKOUT'})} variant='contained' color='primary' disableElevation sx={{width: '200px', height: '45px', margin: '0 8px'}}>ثبت سفارش</Button>
+                    <Button onClick={() => dispatch(checkout())} variant='contained' color='primary' disableElevation sx={{width: '200px', height: '45px', margin: '0 8px'}}>ثبت سفارش</Button>
                 </div>
                 }
                 {
-                    state.checkout && <div className={styles.checkoutStyle}>
+                    selectedItems.checkout && <div className={styles.checkoutStyle}>
                         <h1>خرید شما با موفقیت ثبت شد و در انتظار تایید است.</h1>
                         <Link to='/'><Button>خرید بیشتر</Button></Link>
                     </div>

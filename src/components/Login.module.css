@@ -136,7 +136,7 @@
     background-color: #c7dcfa;
 }
 
-@media(max-width: 400px) {
+@media(max-width: 438px) {
     .containerBottom input {
         width: 100%;
     }

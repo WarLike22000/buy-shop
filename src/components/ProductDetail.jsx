@@ -13,6 +13,9 @@ import { Add, ArrowBack, DeleteOutline, Remove } from '@mui/icons-material';
 
 import { reducerContext } from './ReducerProvider.jsx';
 
+//redux
+import { addItem, decrease, increase, removeItem } from '../features/selectedSlice';
+
 const ProductDetail = () => {
 
     const { id } = useParams();
@@ -20,7 +23,7 @@ const ProductDetail = () => {
     const product = products[id - 1];
     const { image, title, price, description, category, rating: {count}  } = product;
 
-    const { state, dispatch } = useContext(reducerContext);
+    const { selectedItems, dispatch } = useContext(reducerContext);
 
     const navigate = useNavigate();
     const arrowHandler = () => {
@@ -44,19 +47,19 @@ const ProductDetail = () => {
                     <p>دسته: {category}</p>
                     <p>موجودی در انبار: {count}</p>
                     {
-                        quantityCount(state, product.id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center', width: '150px', height: '31px', mt: 2, mb: 2}}>
-                            <IconButton onClick={() => dispatch({type: 'INCREASE', payload: product})}><Add /></IconButton>
-                            <Typography color='#19376D' sx={{fontWeight: 600, mr: 1, ml: 1, textAlign: 'center'}}>{quantityCount(state, product.id)}</Typography>
+                        quantityCount(selectedItems, product.id) >= 1 && <Box sx={{display: 'flex', alignItems: 'center', width: '150px', height: '31px', mt: 2, mb: 2}}>
+                            <IconButton onClick={() => dispatch(increase(product))}><Add /></IconButton>
+                            <Typography color='#19376D' sx={{fontWeight: 600, mr: 1, ml: 1, textAlign: 'center'}}>{quantityCount(selectedItems, product.id)}</Typography>
                             {
-                                quantityCount(state, product.id) > 1 && <IconButton onClick={() => dispatch({type: 'DECREASE', payload: product})}><Remove /></IconButton>
+                                quantityCount(selectedItems, product.id) > 1 && <IconButton onClick={() => dispatch(decrease(product))}><Remove /></IconButton>
                             }
                             {
-                                quantityCount(state, product.id) === 1 && <IconButton onClick={() => dispatch({type: 'REMOVE_ITEM', payload: product})}><DeleteOutline /></IconButton>
+                                quantityCount(selectedItems, product.id) === 1 && <IconButton onClick={() => dispatch(removeItem(product))}><DeleteOutline /></IconButton>
                             }
                         </Box>
                     }
                     {
-                        isInCart(state, product.id) && <Button onClick={() => dispatch({type: 'ADD_ITEM', payload: product})} disableElevation sx={{fontSize: '13px', fontWeight: 700, mt: 2, mb: 2}} variant='contained' size='small'>افزودن به سبد خرید</Button>
+                        isInCart(selectedItems, product.id) && <Button onClick={() => dispatch(addItem(product))} disableElevation sx={{fontSize: '13px', fontWeight: 700, mt: 2, mb: 2}} variant='contained' size='small'>افزودن به سبد خرید</Button>
                     }
                 </div>
             </div>

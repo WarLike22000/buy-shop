@@ -1,17 +1,18 @@
-import React, { useEffect, useState, createContext } from 'react';
-import GetProducts from '../services/api';
+import React, { useEffect, createContext } from 'react';
+
+import { useSelector, useDispatch } from 'react-redux';
+//redux
+import { fetchProducts } from '../features/productsSlice.jsx';
 
 export const productsContext = createContext();
 
 const ProductsContextProvider = ( { children } ) => {
 
-    const [products, setProducts] = useState([]);
-
+    const products = useSelector(store => store.products.products)
+    const dispatch = useDispatch();
+    
     useEffect(() => {
-        const fetchAPI = async () => {
-            setProducts(await GetProducts());
-        }
-        fetchAPI();
+        dispatch(fetchProducts())
     }, []);
     
     return (
